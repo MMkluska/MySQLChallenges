@@ -38,10 +38,12 @@ SELECT last_name, count(last_name) `Count` FROM actor GROUP BY last_name HAVING 
 
 -- 13. Which actor has appeared in the most films?
 SELECT first_name `First Name`, last_name `Last Name` FROM actor WHERE actor_id =(
-SELECT actor_id FROM film_actor GROUP BY actor_id HAVING count(actor_id)>1 ORDER BY count(actor_id) DESC LIMIT 1 );
+SELECT actor_id FROM film_actor GROUP BY actor_id HAVING count(actor_id)>1 ORDER BY count(actor_id) DESC LIMIT 1);
 
 -- 14. When is 'Academy Dinosaur' due?
-SELECT `Title`, release_year `Relase Year` FROM film WHERE title='Academy Dinosaur';
+SELECT f.Title, r.return_date FROM film f
+JOIN inventory i ON f.film_id=i.film_id
+JOIN rental r ON i.inventory_id=r.inventory_id WHERE title='Academy Dinosaur' ORDER BY r.return_date DESC LIMIT 1; 
 
 -- 15. What is the average runtime of all films?
 SELECT AVG(Length) `Average Length` FROM film;
