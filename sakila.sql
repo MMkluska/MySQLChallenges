@@ -55,7 +55,7 @@ JOIN category c ON fc.category_id = c.category_id GROUP BY c.name;
 SELECT `Title`, `Description`  FROM film WHERE `Description` LIKE "%robot%";
 
 -- 18. How many movies were released in 2010?
-SELECT `Title`, release_year `Relase Year` FROM film WHERE release_year=2010;
+SELECT Count(Title) `Title`, count(release_year) `Relase Year` FROM film WHERE release_year=2010;
 
 -- 19. Find the titles of all the horror movies.
 SELECT f.title `Title`, c.name `Category` FROM film f
