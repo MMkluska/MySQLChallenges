@@ -1,7 +1,7 @@
 USE world;
 
 -- 1. Using COUNT, get the number of cities in the USA.
-SELECT count(`name`) `Number of cities` FROM city;
+SELECT count(`name`) `Number of cities` FROM city WHERE countrycode = (SELECT `code` FROM country WHERE `name`="united states");
 
 -- 2. Find out the population and life expectancy for people in Argentina.
 SELECT `Name`, Population, LifeExpectancy `Life Expectancy` FROM country WHERE `Name`="Argentina";
