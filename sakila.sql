@@ -41,9 +41,9 @@ SELECT first_name `First Name`, last_name `Last Name` FROM actor WHERE actor_id 
 SELECT actor_id FROM film_actor GROUP BY actor_id HAVING count(actor_id)>1 ORDER BY count(actor_id) DESC LIMIT 1);
 
 -- 14. When is 'Academy Dinosaur' due?
-SELECT f.Title, r.return_date FROM film f
+SELECT f.Title, i.inventory_id, r.rental_date, r.return_date FROM film f
 JOIN inventory i ON f.film_id=i.film_id
-JOIN rental r ON i.inventory_id=r.inventory_id WHERE title='Academy Dinosaur' ORDER BY r.return_date DESC LIMIT 1; 
+JOIN rental r ON i.inventory_id=r.inventory_id WHERE title='Academy Dinosaur' AND r.return_date IS NULL; 
 
 -- 15. What is the average runtime of all films?
 SELECT AVG(Length) `Average Length` FROM film;
