@@ -83,5 +83,4 @@ SELECT first_name `First Name`, last_name `Last Name` FROM actor WHERE last_name
 
 -- 25. Which category contains the most films?
 SELECT DISTINCT c.name `Category`, count(*) `Count` FROM film_category fc 
-JOIN category c ON fc.category_id = c.category_id WHERE c.category_id =(
-SELECT category_id FROM film_category GROUP BY category_id ORDER BY count(category_id) DESC LIMIT 1);
+JOIN category c ON fc.category_id = c.category_id WHERE c.category_id  GROUP BY c.category_id ORDER BY count(c.category_id) DESC LIMIT 1;
